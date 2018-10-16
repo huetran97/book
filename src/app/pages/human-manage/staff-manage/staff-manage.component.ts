@@ -29,6 +29,7 @@ export class StaffManageComponent implements OnInit {
   modal={
     state: ''
   }
+  datex =  new Date();
   staffEdit={
     id: '',
     user_name: '',
@@ -195,13 +196,26 @@ export class StaffManageComponent implements OnInit {
       address:'',
       role:'',
   }
-  console.log(this.staffEdit);
+  }
+  date(date:any){
+    var daTe : {
+      year,
+      month,
+      day
+    }
+    daTe.day = date%100;
+    daTe.month = (date%10000 - date%100)/100;
+    daTe.year = (date - date%10000)/10000;
+    return daTe;
+
   }
   onCustom(event) {
       if(event.action === 'edit'){
         this.onEditConfirm(event);
         this.staffEdit=event.data;
+        // this.staffEdit.date_of_birth = this.date(event.data.date_of_birth);
         console.log(this.staffEdit);
+        console.log(this.datex);
       }
       // else if(event.action === 'add'){
         // this.onAddConfirm(event);
