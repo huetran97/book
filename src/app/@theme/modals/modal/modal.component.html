@@ -1,0 +1,124 @@
+<div class="modal-header">
+      <span>{{ message | uppercase }} FORM</span>
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+    <nb-card style="margin-bottom: 0px!important;">
+
+    <nb-card-body>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="inputFirstName">Họ và tên</label>
+            <input type="text" [(ngModel)]="staff_edit.name" class="form-control" placeholder="Your Name">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="inputLastName">Tài khoản</label>
+            <input type="text" [(ngModel)]="staff_edit.user_name" class="form-control"  placeholder="Last Name">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputWebsite">Ngày cấp CMTND</label>
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="yyyy-mm-dd"
+                             name="dp" [(ngModel)]="staff_edit.id_card_number_date" ngbDatepicker #d="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary ion-arrow-down-b calendar" (click)="d.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                
+            
+              </div>
+            </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputWebsite"> Ngày tháng năm sinh </label>
+              <form class="form-inline">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                           name="dp" [(ngModel)]="staff_edit.date_of_birth" ngbDatepicker #b="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-secondary ion-arrow-down-b calendar" (click)="b.toggle()" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              
+       
+            </div>
+          </div>
+          
+        </div>
+         
+        
+        
+      
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="form-group">
+                <label for="inputWebsite">Số CMTND</label>
+                <input type="text" [(ngModel)]="staff_edit.id_card_number" class="form-control" id="inputWebsite" placeholder="Id Card Number">
+              </div>
+            </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>
+              Giới tính
+            </label>
+            <select class="form-control" [(ngModel)]="staff_edit.sex">
+              <option>Nam</option>
+              <option>Nữ</option>
+              
+            </select>
+          </div>
+        </div>
+        </div>
+        
+          <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputEmail">Email</label>
+                  <input type="email" [(ngModel)]="staff_edit.email" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
+              </div>
+            
+            
+        
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputWebsite">Địa chỉ</label>
+                  <input type="text" [(ngModel)]="staff_edit.address" class="form-control" id="inputWebsite" placeholder="Address">
+                </div>
+              </div>
+            </div>
+   
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Mã số thuế</label>
+                    <input type="text" [(ngModel)]="staff_edit.tax_number" class="form-control" placeholder="Tax number">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Mã BHYT</label>
+                    <input type="text" [(ngModel)]="staff_edit.insurrance_number" class="form-control" placeholder="Insurrance number">
+                  </div>
+                </div>
+              </div>     
+      <button type="submit" class="btn btn-primary" (click)="onClick()">{{ message }}</button>
+     
+    </nb-card-body>
+  </nb-card>
+  

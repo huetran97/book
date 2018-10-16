@@ -1,0 +1,187 @@
+<nb-card>
+    <nb-card-header>
+       Staff List <button class="btn btn-hero-success btn-demo" (click)="onAddConfirm()" style="margin-left: 20px;">Thêm nhân viên</button>
+    </nb-card-header>
+    <nb-card-body>
+       <ng2-smart-table 
+       [settings]="settings" 
+       [source]="source" 
+       (deleteConfirm)="onDeleteConfirm($event)"
+       (custom)="onCustom($event)"
+       >
+       </ng2-smart-table>
+    </nb-card-body>
+ </nb-card>
+ <div id="myModal" [class.displayBlock]="display" class="modal" >
+    <div class="modal-content"style="width:800px" >
+       <div class="modal-header">
+          <h2 style="margin-top:20px;" > {{ modal.state | uppercase }} FORM</h2>
+          <button class="close" aria-label="Close" (click)="changeDisplay()" >
+          <span >&times;</span>
+          </button>
+       </div>
+       <nb-card style="margin-bottom: 0px!important;">
+          <nb-card-body>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputFirstName">Họ và tên</label>
+                      <input type="text"  [(ngModel)]="staffEdit.name" class="form-control" placeholder="Your Name">
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputLastName">Tài khoản</label>
+                      <input type="text" [(ngModel)]="staffEdit.user_name"  class="form-control"  placeholder="Last Name">
+                   </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputWebsite">Ngày cấp CMTND</label>
+                      <form class="form-inline">
+                         <div class="form-group">
+                            <div class="input-group">
+                               <input [(ngModel)]="staffEdit.id_card_number_date" class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp"  ngbDatepicker #d="ngbDatepicker">
+                               <div class="input-group-append">
+                                  <button class="btn btn-secondary ion-arrow-down-b calendar" (click)="d.toggle()" type="button"></button>
+                               </div>
+                            </div>
+                         </div>
+                      </form>
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputWebsite"> Ngày tháng năm sinh </label>
+                      <form class="form-inline">
+                         <div class="form-group">
+                            <div class="input-group">
+                               <input [(ngModel)]="staffEdit.date_of_birth" class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp" ngbDatepicker #b="ngbDatepicker">
+                               <div class="input-group-append">
+                                  <button class="btn btn-secondary ion-arrow-down-b calendar" (click)="b.toggle()" type="button"></button>
+                               </div>
+                            </div>
+                         </div>
+                      </form>
+                   </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputWebsite">Ngày bắt đầu làm việc</label>
+                      <form class="form-inline">
+                         <div class="form-group">
+                            <div class="input-group">
+                               <input [(ngModel)]="staffEdit.start_work_date" class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp"  ngbDatepicker #x="ngbDatepicker">
+                               <div class="input-group-append">
+                                  <button class="btn btn-secondary ion-arrow-down-b calendar" (click)="x.toggle()" type="button"></button>
+                               </div>
+                            </div>
+                         </div>
+                      </form>
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputWebsite">Ngày kết thúc làm việc</label>
+                      <form class="form-inline">
+                         <div class="form-group">
+                            <div class="input-group">
+                               <input [(ngModel)]="staffEdit.end_work_date" class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp"  ngbDatepicker #k="ngbDatepicker">
+                               <div class="input-group-append">
+                                  <button class="btn btn-secondary ion-arrow-down-b calendar" (click)="k.toggle()" type="button"></button>
+                               </div>
+                            </div>
+                         </div>
+                      </form>
+                   </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label>
+                      Chức vụ
+                      </label>
+                      <select class="form-control" [(ngModel)]="staffEdit.role" #ROLE>
+                      <option value="SaleStaff">Nhân viên bán hàng</option>
+                      <option value="CashierStaff">Nhân viên thu ngân</option>
+                      <option value="SecurityStaff">Nhân viên bảo vệ</option>
+                      <option value="ManagerStore">Quản lý</option>
+                      </select>
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label>
+                      Nhà sách
+                      </label>
+                      <select class="form-control" [(ngModel)]="staffEdit.store.name" #STORENAME>
+                      <option value="5bb82cb6521813000f2f2b4e">XMH BookStore</option>
+                      <option value="5bb82cdb521813000f2f2b50">XMH BookStore Hoàng Mai</option>
+                      <option value="5bb82cec521813000f2f2b51">XMH BookStore Hà Đông</option>
+                      <option value="5bb82d00521813000f2f2b52">XMH BookStore Đống Đa</option>
+                      <option value="5bb82d23521813000f2f2b54">XMH BookStore Thanh Trì</option>
+                      </select>
+                   </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputWebsite">Số CMTND</label>
+                      <input type="text" [(ngModel)]="staffEdit.id_card_number"  class="form-control" id="inputWebsite" placeholder="Id Card Number">
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label>
+                      Giới tính
+                      </label>
+                      <select [(ngModel)]="staffEdit.sex" class="form-control" #SEX >
+                      <option  value= "MALE">Nam</option>
+                      <option value="FEMALE">Nữ</option>
+                      </select>
+                   </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputEmail">Email</label>
+                      <input type="email" [(ngModel)]="staffEdit.email" class="form-control" id="inputEmail" placeholder="Email">
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label for="inputWebsite">Địa chỉ</label>
+                      <input type="text" [(ngModel)]="staffEdit.address"  class="form-control" id="inputWebsite" placeholder="Address">
+                   </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label>Mã số thuế</label>
+                      <input type="text" [(ngModel)]="staffEdit.tax_number"  class="form-control" placeholder="Tax number">
+                   </div>
+                </div>
+                <div class="col-sm-6">
+                   <div class="form-group">
+                      <label>Mã BHYT</label>
+                      <input type="text" [(ngModel)]="staffEdit.insurrance_number"  class="form-control" placeholder="Insurrance number">
+                   </div>
+                </div>
+             </div>
+             <button type="submit" class="btn btn-primary" (click)="onClick(SEX.value,STORENAME.value,ROLE.value)" style="float: right"> {{ modal.state }} </button>
+          </nb-card-body>
+       </nb-card>
+    </div>
+ </div>
