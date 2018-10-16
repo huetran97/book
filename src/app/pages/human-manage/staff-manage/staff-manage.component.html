@@ -13,9 +13,9 @@
     </nb-card-body>
  </nb-card>
  <div id="myModal" [class.displayBlock]="display" class="modal" >
-    <div class="modal-content"style="width:800px" >
+    <div class="modal-content"style="width:600px" >
        <div class="modal-header">
-          <h2 style="margin-top:20px;" > {{ modal.state | uppercase }} FORM</h2>
+          <h4 style="margin-top:20px;" > {{ modal.state | uppercase }} FORM</h4>
           <button class="close" aria-label="Close" (click)="changeDisplay()" >
           <span >&times;</span>
           </button>
@@ -179,6 +179,14 @@
                       <input type="text" [(ngModel)]="staffEdit.insurrance_number"  class="form-control" placeholder="Insurrance number">
                    </div>
                 </div>
+             </div>
+             <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                       <label>Số điện thoại</label>
+                       <input type="text" [(ngModel)]="staffEdit.phone_number"  class="form-control" placeholder="Phone number">
+                    </div>
+                 </div>
              </div>
              <button type="submit" class="btn btn-primary" (click)="onClick(SEX.value,STORENAME.value,ROLE.value)" style="float: right"> {{ modal.state }} </button>
           </nb-card-body>

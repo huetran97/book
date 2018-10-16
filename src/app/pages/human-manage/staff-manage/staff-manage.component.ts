@@ -113,10 +113,10 @@ export class StaffManageComponent implements OnInit {
         title: 'Name',
         type: 'string',
       },
-      user_name: {
-        title: 'User Name',
-        type: 'string',
-      },
+      // user_name: {
+      //   title: 'User Name',
+      //   type: 'string',
+      // },
       phone_number: {
         title: 'Phone Number',
         type: 'string',
@@ -216,13 +216,30 @@ export class StaffManageComponent implements OnInit {
         this.staff.id_card_number_date = Number(this.staffEdit.id_card_number_date.year.toString()+this.staffEdit.id_card_number_date.month.toString()+this.staffEdit.id_card_number_date.day.toString());
         this.staff.start_work_date = Number(this.staffEdit.start_work_date.year.toString()+this.staffEdit.start_work_date.month.toString()+this.staffEdit.start_work_date.day.toString());
         this.staff.end_work_date = Number(this.staffEdit.end_work_date.year.toString()+this.staffEdit.end_work_date.month.toString()+this.staffEdit.end_work_date.day.toString());
-console.log(this.staff);
+        this.staff.sex = SEX,
+        this.staff.store.id = STORENAME,
+        this.staff.role = ROLE,
+        console.log(this.staff);
        if(await this.staff_service.editStaff(this.staff)){
          this.changeDisplay();
          this.data = await this.staff_service.getListStaff();
          this.source.load(this.data);
        }
       }else{
+        this.staff= this.staffEdit;
+        this.staff.date_of_birth = Number(this.staffEdit.date_of_birth.year.toString()+this.staffEdit.date_of_birth.month.toString()+this.staffEdit.date_of_birth.day.toString());
+        this.staff.id_card_number_date = Number(this.staffEdit.id_card_number_date.year.toString()+this.staffEdit.id_card_number_date.month.toString()+this.staffEdit.id_card_number_date.day.toString());
+        this.staff.start_work_date = Number(this.staffEdit.start_work_date.year.toString()+this.staffEdit.start_work_date.month.toString()+this.staffEdit.start_work_date.day.toString());
+        this.staff.end_work_date = Number(this.staffEdit.end_work_date.year.toString()+this.staffEdit.end_work_date.month.toString()+this.staffEdit.end_work_date.day.toString());
+        this.staff.sex = SEX,
+        this.staff.store.id = STORENAME,
+        this.staff.role = ROLE,
+        console.log(this.staff);
+       if(await this.staff_service.addStaff(this.staff)){
+         this.changeDisplay();
+         this.data = await this.staff_service.getListStaff();
+         this.source.load(this.data);
+       }
         
       }
       
