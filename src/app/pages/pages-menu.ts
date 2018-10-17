@@ -2,25 +2,25 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: "ADMIN MANAGE",
+    title: "QUẢN TRỊ",
     group:true
   },
   {
-    title: 'Manage ',
+    title: 'Quản lý con người ',
     icon: 'nb-person',
     link: '/pages/human-manage',
     children:[
       {
-        title: 'User manage',
+        title: 'Quản lý khách hàng',
         link: '/pages/human-manage/user-manage',
         
       },
       {
-        title:'Staff manage',
+        title:'Quản lý nhân sự',
         link: '/pages/human-manage/staff-manage',
       },
     ]
-  }
+  },
   // {
   //   title: 'E-commerce',
   //   icon: 'nb-e-commerce',
@@ -36,45 +36,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   title: 'FEATURES',
   //   group: true,
   // },
-  // {
-  //   title: 'UI Features',
-  //   icon: 'nb-keypad',
-  //   link: '/pages/ui-features',
-  //   children: [
-  //     {
-  //       title: 'Buttons',
-  //       link: '/pages/ui-features/buttons',
-  //     },
-  //     {
-  //       title: 'Grid',
-  //       link: '/pages/ui-features/grid',
-  //     },
-  //     {
-  //       title: 'Icons',
-  //       link: '/pages/ui-features/icons',
-  //     },
-  //     {
-  //       title: 'Modals',
-  //       link: '/pages/ui-features/modals',
-  //     },
-  //     {
-  //       title: 'Popovers',
-  //       link: '/pages/ui-features/popovers',
-  //     },
-  //     {
-  //       title: 'Typography',
-  //       link: '/pages/ui-features/typography',
-  //     },
-  //     {
-  //       title: 'Animated Searches',
-  //       link: '/pages/ui-features/search-fields',
-  //     },
-  //     {
-  //       title: 'Tabs',
-  //       link: '/pages/ui-features/tabs',
-  //     },
-  //   ],
-  // },
+  {
+    title: 'Quản lý sản phẩm',
+    icon: 'nb-keypad',
+    link: '/pages/product-manage',
+    children: [
+      {
+        title: 'Quản lý danh mục',
+        link: '/pages/product-manage/domain-knowledge',
+      },
+      {
+        title: 'Quản lý sách',
+        link: '/pages/product-manage/book-manage',
+      },
+      
+    ],
+  },
   // {
   //   title: 'Forms',
   //   icon: 'nb-compose',

@@ -12,6 +12,10 @@ const routes: Routes = [{
     {
       path:'human-manage',
       loadChildren: './human-manage/human-manage.module#HumanManageModule',
+    },
+    {
+      path: 'product-manage',
+      loadChildren: './product-manage/product-manage.module#ProductManageModule',
     }
   ]
 }];

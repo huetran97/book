@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 import {SharemodelService} from '../../../@core/data/sharemodel.service';
+import { DateService } from '../../../@core/data/date.service';
 
 
 
@@ -71,8 +72,7 @@ export class StaffManageComponent implements OnInit {
 };
   constructor(private service: SmartTableService,
     private staff_service: StaffService,
-    private modalService: NgbModal,
-    private shared_model_service: SharemodelService) {
+    private date_service: DateService) {
    
   }
 
@@ -137,7 +137,8 @@ export class StaffManageComponent implements OnInit {
       store:{
         title:'Store',
         type:'String',
-        valuePrepareFunction: (store) => { return store.name }
+        valuePrepareFunction: (store) => { return store.name },
+        filter: true,
       }
    },
   };
@@ -197,25 +198,15 @@ export class StaffManageComponent implements OnInit {
       role:'',
   }
   }
-  date(date:any){
-    var daTe : {
-      year,
-      month,
-      day
-    }
-    daTe.day = date%100;
-    daTe.month = (date%10000 - date%100)/100;
-    daTe.year = (date - date%10000)/10000;
-    return daTe;
-
-  }
+  
   onCustom(event) {
       if(event.action === 'edit'){
         this.onEditConfirm(event);
         this.staffEdit=event.data;
-        // this.staffEdit.date_of_birth = this.date(event.data.date_of_birth);
-        console.log(this.staffEdit);
-        console.log(this.datex);
+        this.staffEdit.date_of_birth = this.date_service.number_to_date(this.staffEdit.date_of_birth);
+        this.staffEdit.id_card_number_date = this.date_service.number_to_date(this.staffEdit.id_card_number_date);
+        this.staffEdit.start_work_date = this.date_service.number_to_date(this.staffEdit.start_work_date);
+        this.staffEdit.end_work_date = this.date_service.number_to_date(this.staffEdit.end_work_date);
       }
       // else if(event.action === 'add'){
         // this.onAddConfirm(event);
@@ -226,10 +217,10 @@ export class StaffManageComponent implements OnInit {
    async onClick(SEX,STORENAME,ROLE){
       if(this.modal.state === 'edit'){
         this.staff= this.staffEdit;
-        this.staff.date_of_birth = Number(this.staffEdit.date_of_birth.year.toString()+this.staffEdit.date_of_birth.month.toString()+this.staffEdit.date_of_birth.day.toString());
-        this.staff.id_card_number_date = Number(this.staffEdit.id_card_number_date.year.toString()+this.staffEdit.id_card_number_date.month.toString()+this.staffEdit.id_card_number_date.day.toString());
-        this.staff.start_work_date = Number(this.staffEdit.start_work_date.year.toString()+this.staffEdit.start_work_date.month.toString()+this.staffEdit.start_work_date.day.toString());
-        this.staff.end_work_date = Number(this.staffEdit.end_work_date.year.toString()+this.staffEdit.end_work_date.month.toString()+this.staffEdit.end_work_date.day.toString());
+        this.staff.date_of_birth = this.date_service.date_to_number(this.staff.date_of_birth);
+        this.staff.id_card_number_date = this.date_service.date_to_number(this.staff.id_card_number_date);
+        this.staff.start_work_date = this.date_service.date_to_number(this.staff.start_work_date);
+        this.staff.end_work_date = this.date_service.date_to_number(this.staff.end_work_date);
         this.staff.sex = SEX,
         this.staff.store.id = STORENAME,
         this.staff.role = ROLE,
@@ -241,10 +232,11 @@ export class StaffManageComponent implements OnInit {
        }
       }else{
         this.staff= this.staffEdit;
-        this.staff.date_of_birth = Number(this.staffEdit.date_of_birth.year.toString()+this.staffEdit.date_of_birth.month.toString()+this.staffEdit.date_of_birth.day.toString());
-        this.staff.id_card_number_date = Number(this.staffEdit.id_card_number_date.year.toString()+this.staffEdit.id_card_number_date.month.toString()+this.staffEdit.id_card_number_date.day.toString());
-        this.staff.start_work_date = Number(this.staffEdit.start_work_date.year.toString()+this.staffEdit.start_work_date.month.toString()+this.staffEdit.start_work_date.day.toString());
-        this.staff.end_work_date = Number(this.staffEdit.end_work_date.year.toString()+this.staffEdit.end_work_date.month.toString()+this.staffEdit.end_work_date.day.toString());
+        this.staff.date_of_birth = this.date_service.date_to_number(this.staff.date_of_birth);
+        console.log(this.staff.date_of_birth);
+        this.staff.id_card_number_date = this.date_service.date_to_number(this.staff.id_card_number_date);
+        this.staff.start_work_date = this.date_service.date_to_number(this.staff.start_work_date);
+        this.staff.end_work_date = this.date_service.date_to_number(this.staff.end_work_date);
         this.staff.sex = SEX,
         this.staff.store.id = STORENAME,
         this.staff.role = ROLE,
@@ -257,7 +249,8 @@ export class StaffManageComponent implements OnInit {
         
       }
       
-    }
+    
+  }
 
 
   

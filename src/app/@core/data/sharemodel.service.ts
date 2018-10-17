@@ -5,23 +5,27 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharemodelService {
-  staff = {
+  subject = {
     id:'',
     name:'',
+    language:{
+      id:'',
+      name:''
+    }
   }
   private messageSource = new BehaviorSubject('default message');
-  private dataStaffEdit = new BehaviorSubject(this.staff);
+  private dataSubjectEdit = new BehaviorSubject(this.subject);
 
   currentMessage = this.messageSource.asObservable();
-  staffEdit = this.dataStaffEdit.asObservable();
+  subjectEdit = this.dataSubjectEdit.asObservable();
 
   constructor() { }
 
   changeMessage(message: string) {
     this.messageSource.next(message);
   }
-  changeStaff(staffedit: any){
-    this.dataStaffEdit.next(staffedit);
+  changeStaff(subjectedit: any){
+    this.dataSubjectEdit.next(subjectedit);
   }
 }
 
