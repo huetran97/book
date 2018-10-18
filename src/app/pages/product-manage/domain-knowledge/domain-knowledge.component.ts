@@ -117,7 +117,7 @@ export class DomainKnowledgeComponent implements OnInit {
         name: event.newData.name,
         language : event.newData.language
       };
-      // console.log(data)
+      console.log(data)
     if( await this.service.updateDomainKnowledge(data)){
 
       const data =await this.service.getListDomainKnowledge() ;
