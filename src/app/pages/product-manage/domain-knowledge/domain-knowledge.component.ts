@@ -120,10 +120,11 @@ export class DomainKnowledgeComponent implements OnInit {
       // console.log(data)
     if( await this.service.updateDomainKnowledge(data)){
 
-      // event.confirm.resolve(event.newData);
       const data =await this.service.getListDomainKnowledge() ;
       this.data =data;
       this.source.load(this.data);
+            // event.confirm.resolve(event.newData);
+
     }
       
     } else {
@@ -146,9 +147,11 @@ export class DomainKnowledgeComponent implements OnInit {
      
     if( await this.service.addDomainKnowledge(event.newData)){
       event.confirm.resolve(event.newData);
+
       const data =await this.service.getListDomainKnowledge() ;
       this.data =data;
       this.source.load(this.data);
+
     }
       
     } else {

@@ -13,6 +13,7 @@ export class SubjectManageComponent implements OnInit {
   data;
   domain_list;
   subject_list;
+  domain_current;
   source: LocalDataSource = new LocalDataSource();
   constructor(private domain_service: DomainKnowledgeService,
               private subject_service: SubjectManageService) { }
@@ -39,23 +40,7 @@ export class SubjectManageComponent implements OnInit {
                     title: 'Tên Thể Loại',
                     type: 'string',
                   },
-                  domain_knowledge: {
-                    title: 'Ngôn ngữ',
-                    type: 'html',
-                    editor: {
-                      type: 'list',
-                      config: {
-                        list: [{ value: '5bb70f9a521813000f2f2b31', title: 'Tiếng Anh' }, { value: '5bb70f50521813000f2f2b30', title: 'Tiếng Việt' }]
-                      }
-                    },
-                    valuePrepareFunction: (language) => { 
-                      if(language.language.name === 'English'){
-                        return language.language.name = 'Tiếng Anh';
-                      }
-                      return language.language.name;
-                     },
-                    filter: true,
-                  },
+                  
                 },
                 
               };
@@ -67,6 +52,7 @@ async  displaySubject(domain){
   this.subject_list = await this.subject_service.getSubjectbyDomain(domain);
   this.source.load(this.subject_list);
   console.log(this.subject_list); 
+  this.domain_current =domain;
   }
 
 
@@ -88,13 +74,32 @@ async  displaySubject(domain){
         name: event.newData.name,
         domain_knowledge : event.data.domain_knowledge.id
       };
-      console.log(data)
     if( await this.subject_service.updateSubject(data)){
 
-      // event.confirm.resolve(event.newData);
       const datax =await this.subject_service.getSubjectbyDomain(data.domain_knowledge) ;
       this.data = datax;
       this.source.load(this.data);
+      // event.confirm.resolve(event.newData);
+
+    }
+      
+    } else {
+      event.confirm.reject();
+    }
+  }
+  async onCreateConfirm(event) {
+    if (window.confirm('Are you sure you want to create?')) {
+      
+      var data = {
+        name: event.newData.name,
+        domain_knowledge : this.domain_current
+      };
+    if(await this.subject_service.addSubject(data)){
+      const datax =await this.subject_service.getSubjectbyDomain(data.domain_knowledge) ;
+      this.data = datax;
+      this.source.load(this.data);
+      event.confirm.resolve(event.newData);
+
     }
       
     } else {

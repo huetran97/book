@@ -148,4 +148,38 @@ export class SubjectManageService {
       }
  )
   }
+  addSubject(subject){
+    return new Promise(
+      (resolve,reject)=>{
+        try{
+          axios({
+            url: 'http://159.89.206.182:4001/graphql/cms',
+            method: 'post',
+            data: {
+              query: `
+              mutation addSubject($name:String!, $domain_knowledge: String!){
+                addSubject(name:$name, domain_knowledge:$domain_knowledge){
+                  id
+                  name
+                  domain_knowledge{
+                    id
+                    name
+                  }
+                }
+              }
+                `,
+                variables:{
+                  name: subject.name,
+                  domain_knowledge:subject.domain_knowledge
+                }
+            }
+          }).then((result) => {
+            return resolve(result.data.data.addSubject);
+          }).catch(reject);
+        } catch(err){
+          return reject(err);
+        }
+      }
+ )
+  }
 }
