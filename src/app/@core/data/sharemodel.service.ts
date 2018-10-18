@@ -14,18 +14,14 @@ export class SharemodelService {
     }
   }
   private messageSource = new BehaviorSubject('default message');
-  private dataSubjectEdit = new BehaviorSubject(this.subject);
 
   currentMessage = this.messageSource.asObservable();
-  subjectEdit = this.dataSubjectEdit.asObservable();
 
   constructor() { }
 
   changeMessage(message: string) {
     this.messageSource.next(message);
   }
-  changeStaff(subjectedit: any){
-    this.dataSubjectEdit.next(subjectedit);
-  }
+
 }
 

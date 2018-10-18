@@ -30,7 +30,7 @@ export class ButtonViewComponent implements ViewCell, OnInit {
     // console.log(this.rowData);
     let data = this.rowData;
     // console.log(data);
- this.service_shared.changeStaff(this.rowData);
+//  this.service_shared.changeStaff(this.rowData);
   }
 }
 
@@ -87,19 +87,19 @@ export class DomainKnowledgeComponent implements OnInit {
          },
         filter: true,
       },
-      button: {
-        filter:false,
-        title: 'Button',
-        type: 'custom',
-        renderComponent: ButtonViewComponent,
-        onComponentInitFunction(instance) {
-          instance.save.subscribe(row => {
-            // alert(`${row.name} saved!`);
+      // button: {
+      //   filter:false,
+      //   title: 'Button',
+      //   type: 'custom',
+      //   renderComponent: ButtonViewComponent,
+      //   onComponentInitFunction(instance) {
+      //     instance.save.subscribe(row => {
+      //       // alert(`${row.name} saved!`);
 
 
-          });
-        }
-      },
+      //     });
+      //   }
+      // },
 
     },
     

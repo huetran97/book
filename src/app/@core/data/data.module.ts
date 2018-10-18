@@ -18,6 +18,7 @@ import { ProfitBarAnimationChartService } from './profit-bar-animation-chart.ser
 import { LayoutService } from './layout.service';
 import { DateService } from './date.service';
 import { DomainKnowledgeService } from './domain-knowledge.service';
+import { SubjectManageService } from './subject-manage.service';
 
 const SERVICES = [
   DomainKnowledgeService,
@@ -36,7 +37,8 @@ const SERVICES = [
   TrafficBarService,
   ProfitBarAnimationChartService,
   LayoutService,
-  DateService
+  DateService,
+  SubjectManageService
 ];
 
 @NgModule({

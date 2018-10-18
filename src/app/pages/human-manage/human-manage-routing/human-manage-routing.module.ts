@@ -4,7 +4,6 @@ import {Routes,RouterModule} from '@angular/router';
 import { HumanManageComponent } from '../human-manage.component';
 import { UserManageComponent } from '../user-manage/user-manage.component';
 import { StaffManageComponent } from '../staff-manage/staff-manage.component';
-import { ModalComponent} from '../../../@theme/modals/modal/modal.component';
 const routes: Routes =[{
   path:'',
   component: HumanManageComponent,
@@ -26,7 +25,7 @@ const routes: Routes =[{
     RouterModule.forChild(routes)
   ],
   entryComponents:[
-        ModalComponent
+        
   ],
   exports: [RouterModule],
 })
