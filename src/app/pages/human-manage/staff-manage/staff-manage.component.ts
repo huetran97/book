@@ -1,13 +1,10 @@
-import { Component, OnInit, Input,Output,EventEmitter, ViewChild } from '@angular/core';
-import { LocalDataSource,ViewCell } from 'ng2-smart-table';
+import { Component, OnInit} from '@angular/core';
+import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableService } from '../../../@core/data/smart-table.service';
-import { async } from 'q';
 import { StaffService } from '../../../@core/data/staff.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
-import {SharemodelService} from '../../../@core/data/sharemodel.service';
 import { DateService } from '../../../@core/data/date.service';
 
 
