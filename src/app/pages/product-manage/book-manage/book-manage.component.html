@@ -1,3 +1,26 @@
-<p>
-  book-manage works!
-</p>
+
+<div class="row">
+  <div class="col-md-12 col-lg-12"  >
+    <nb-card size="small" >
+      <nb-tabset (changeTab)="onChangeTabs($event)" >
+        <nb-tab *ngFor="let store of list_store" tabTitle={{store.name}}>
+          <nb-card >
+            <nb-card-header>
+               Danh sách sản phẩm <button class="btn btn-hero-success btn-demo" (click)="onAddConfirm()" style="margin-left: 20px;">Thêm sách</button>
+            </nb-card-header>
+            <nb-card-body>
+               <ng2-smart-table 
+               [settings]="settings" 
+               [source]="source" 
+               (deleteConfirm)="onDeleteConfirm($event)"
+               (custom)="onCustom($event)"
+               >
+               </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+        </nb-tab>
+       
+      </nb-tabset>
+    </nb-card>
+  </div>
+</div>
